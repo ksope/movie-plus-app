@@ -5,16 +5,14 @@ import userIcon from "../assets/profile-icon.png";
 import { IoSearchOutline } from "react-icons/io5";
 import { navigation } from "../navigation/navigation";
 
-
-
-
-
 const Navbar = () => {
     const [searchInput, SetSearchInput] = useState("");
     const navigate = useNavigate();
-    
+
     useEffect(() => {
-        navigate(`/search?q=${searchInput}`);
+        if (searchInput) {
+            navigate(`/search?q=${searchInput}`);
+        }
     }, [searchInput]);
 
     const handleSubmit = (e) => {
@@ -22,9 +20,9 @@ const Navbar = () => {
     };
 
     return (
-        <div className="fixed top-0 w-full h-16 bg-neutral-600 opacity-75">
+        <div className="fixed top-0 w-full h-16 bg-neutral-600 opacity-75 z-40">
             <div className="container mx-auto px-4 flex items-center h-full">
-                <Link to={'/'}>
+                <Link to={"/"}>
                     <img src={logo} alt="logo" width={120} />
                 </Link>
             </div>
